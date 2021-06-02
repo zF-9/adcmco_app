@@ -40,13 +40,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <!--<label class="label">Nama</label>-->
-                                    <input class="input--style-4" type="text" name="unique_name" value="{{ $name_unique }}">
+                                    <input class="input--style-4" type="hidden" name="unique_name" value="{{ $name_unique }}">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <!--<label class="label">last name</label>-->
-                                    <input class="input--style-4" type="text" name="unique_id" value="{{ $id_unique }}">
+                                    <input class="input--style-4" type="hidden" name="unique_id" value="{{ $id_unique }}">
                                 </div>
                             </div>
                     </div>
@@ -68,13 +68,13 @@
 
                         <div class="row row-space">
                             <div class="col-2">
-                                <div class="input-group">
+                                <!--<div class="input-group">
                                     <label class="label">Tarikh</label>
                                     <div class="input-group-icon">
                                         <input class="input--style-4 js-datepicker" type="text" name="date">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
-                                </div>
+                                </div>-->
 
 
                             <!--<div class="col-2">
