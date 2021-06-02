@@ -80,7 +80,7 @@
                   <!--<p class="u-text u-text-body-alt-color u-text-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum </p>-->
                   <p class="u-text u-text-body-alt-color u-text-3">Jabatan Perkhidmatan Awam Negeri&nbsp;<br>Blok A Tingkat 14 PPNS&nbsp;<br>88400 Kota Kinabalu&nbsp;<b></b>
                   </p>
-                  <a href="Dashboard-analytics.html" class="u-active-palette-4-base u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">Daily Reports</a>
+                  <a href="https://zf-9.github.io/LiveDashboardv1.03/Dashboard-analytics.html" class="u-active-palette-4-base u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">Daily Reports</a>
                 </div>
               </div>
               <div class="u-align-left u-container-style u-image u-layout-cell u-right-cell u-size-33 u-image-1" data-image-width="1372" data-image-height="1235">
@@ -129,7 +129,7 @@
             <div class="u-layout-row">
               <div class="u-container-style u-layout-cell u-left-cell u-size-30 u-layout-cell-1">
                 <div class="u-container-layout u-valign-top u-container-layout-1">
-                  <h1 class="u-text u-text-body-color u-text-1">We are directly involved in t​he process</h1>
+                  <h1 class="u-text u-text-body-color u-text-1">Kemas Kini Laporan Kes Covid-19</h1>
                   <div class="u-border-6 u-border-palette-1-base u-line u-line-horizontal u-line-1"></div>
                 </div>
               </div>
@@ -141,7 +141,7 @@
                     <br>
                     <br>Non quam lacus suspendisse faucibus interdum. Tempor nec feugiat nisl pretium. Mi in nulla posuere sollicitudin aliquam ultrices. Quisque egestas diam in arcu cursus euismod quis. Libero volutpat sed cras ornare arcu dui vivamus arcu.&nbsp;
                   </p>
-                  <a href="About.html" class="u-active-palette-4-base u-align-left u-border-0 u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">About</a>
+                  <a href="/proto" class="u-active-palette-4-base u-align-left u-border-0 u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">Update</a>
 		 </div>
               </div>
             </div>

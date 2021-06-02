@@ -18,6 +18,14 @@ class updateController extends Controller
 {
     public function select_agency(Request $request) {
         $agency_id = request('agencies'); 
+        //dd($agency_id); index on DB start with 0 = find workaround; 
+
+        if($agency_id - 1 == 0){
+            $agency_id = 1 ;
+        }
+        else {
+            $agency_id = $agency_id - 1;
+        }
 
         $ag_idn = Agencies::where('id_n', '=', $agency_id)->pluck('id_n');
         $ag_name = Agencies::where('id_n', '=', $agency_id)->pluck('Nama_agency');
@@ -45,31 +53,41 @@ class updateController extends Controller
         $active_case->dateTime = $dateTime;
 
         $active_case->save();
-        //dd($active_case);
-        return view('Form_active', ['name_unique'=>$agency_session, 'id_unique'=>$agency_id, 'Time'=>$dateTime]);
+        return view('Form_active', ['name_unique'=>$agency_session, 'id_unique'=>$agency_id]);
     } 
 
     public function update_surveilance() {
         $agency_session = request('unique_name');
         $agency_id =  request('unique_id');
+        $dateToday = date('d/m/Y');
 
         $surveilance_case = new Surveilance;
 
         $surveilance_case->Q_Center = request('centerq');
         $surveilance_case->House_Q = request('houseq');
         $surveilance_case->ref_key = $agency_id;
+        $surveilance_case->dateTime = $dateToday;
 
-        //dd($surveilance_case);
         $surveilance_case->save();
         return view('home_alternate');
     } 
 
-    public function surveilances($id, $name, $time) {
-        //$agency_session = request('unique_name');
-        //$agency_id =  request('unique_id');
-        //dd($id, $name);
+    public function surveilances($id, $name) {
+        return view('Form_surveilance',['name_unique'=>$name, 'id_unique'=>$id]);
+    }
 
-        return view('Form_surveilance',['name_unique'=>$name, 'id_unique'=>$id, 'dateTime'=>$time]);
+    public function debug_page($id_a) {
+        $data_record = Active::where('ref_key', '=', $id_a)->pluck('dateTime'); 
+        $dateToday = date('d/m/Y'); 
+        
+        dd($data_record, $dateToday);
+
+        if($data_record == $dateToday) {
+            dd("yes");
+        }
+        else {
+            dd("no");
+        }
     }
 
 }

@@ -49,12 +49,6 @@
                                     <input class="input--style-4" type="text" name="unique_id" value="{{ $id_unique }}">
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <!--<label class="label">last name</label>-->
-                                    <input class="input--style-4" type="text" name="unique_time" value="{{ $dateTime }}">
-                                </div>
-                            </div>
                     </div>
                     <div class="row row-space">
                         <div class="col-2">
@@ -73,17 +67,18 @@
 
 
                         <div class="row row-space">
-                            <!--<div class="col-2">
+                            <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Tarikh</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <input class="input--style-4 js-datepicker" type="text" name="date">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
-                            </div>-->
-                            <div class="col-2">
-                                <!--<div class="input-group">
+
+
+                            <!--<div class="col-2">
+                                <div class="input-group">
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male

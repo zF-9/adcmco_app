@@ -42,13 +42,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <!--<label class="label">Nama</label>-->
-                                    <input class="input--style-4" type="hidden" name="unique_name" value="{{ $name_unique }}">
+                                    <input class="input--style-4" type="text" name="unique_name" value="{{ $name_unique }}">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <!--<label class="label">last name</label>-->
-                                    <input class="input--style-4" type="hidden" name="unique_id" value="{{ $id_unique }}">
+                                    <input class="input--style-4" type="text" name="unique_id" value="{{ $id_unique }}">
                                 </div>
                             </div>
                     </div>
@@ -155,7 +155,7 @@
                         </div>
                     </form>
                     
-                    <form action="/surveilance/{{ $id_unique }}/{{ $name_unique }}/{{ $Time }}" method="GET">
+                    <form action="/surveilance/{{ $id_unique }}/{{ $name_unique }}" method="GET">
                         <div class="p-t-15">
                                 <button class="btn btn--radius-2 btn--blue" type="submit">Next</button>
                                 <!-- reroute to form_surveilance -->

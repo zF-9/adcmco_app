@@ -50,7 +50,7 @@
                         </div>
 
                         <div class="input-group">
-                            <label class="label">Status</label>
+                            <label class="label">Kementerian/Jabatan/Agensi</label>
                             <div class="rs-select2 js-select-simple">
                                 <select name="agencies">
                                     <option disabled="disabled" selected="selected">Choose option</option>
@@ -204,6 +204,9 @@
                                     <option value="149">Pihak Berkuasa Pembangunan Ekonomi & Pelaburan (SEDIA)</option>
                                     <option value="150">Sabah Energy Corporation Sdn Bhd</option>
                                     <option value="151">Puspanita Cawangan Negeri Sabah</option>
+                                    <!--@foreach($list as $senarai)
+                                        <option value="{{$senarai->id}}">{{$senarai->Nama_agency}}</option>
+                                    @endforeach-->
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
