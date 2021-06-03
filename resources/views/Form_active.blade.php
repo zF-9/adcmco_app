@@ -110,7 +110,7 @@
                             </div>
                         </div>
 
-                        <div class="col-2">
+                        <!--<div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Tarikh</label>
                                     <div class="input-group-icon">
@@ -118,7 +118,7 @@
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
-                        </div>
+                        </div>-->
                         <!-- remove datepicker or not ?; add table list to show added record on Today() -->
 
                         <!--<div class="row row-space">

@@ -20,6 +20,11 @@ Route::get('/', function () {
     return view('home_alternate');
 });
 
+Route::get('/analytics', function () {
+    //return view('welcome');
+    return view('dashboard');
+});
+
 Route::get('/test', function () {
     return view('home_alternate');
 });
@@ -34,6 +39,7 @@ Route::get('/proto', function () {
 });
 
 //Route::get('/selected/{id}/{agency}', 'updateController@add_record');
+Route::get('/table/{id_a}', 'updateController@tableview');
 
 Route::post('/selected','updateController@select_agency');
 Route::post('/active_cases', 'updateController@update_active');

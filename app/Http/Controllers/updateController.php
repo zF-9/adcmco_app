@@ -90,4 +90,15 @@ class updateController extends Controller
         }
     }
 
+    public function tableview($id_a) {
+        $dateToday = date('d/m/Y'); 
+        //$dateYesterday = $dateToday - 1;
+        $dateYesterday = date('d/m/Y',strtotime("-1 days"));
+        //$dateToday->modify('-1 day');
+        //dd($dateYesterday);
+
+        $data_echo = Active::where('ref_key', '=', $id_a)->where('dateTime', '=', $dateYesterday)->get();
+        dd($data_echo);
+    }
+
 }
