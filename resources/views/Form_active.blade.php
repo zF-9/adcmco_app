@@ -24,6 +24,15 @@
 
     <!-- Main CSS-->
     <link href="/css/main_form.css" rel="stylesheet" media="all">
+
+    <!-- Nucleo Icons -->
+    <link href="/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <!-- CSS Files -->
+    <!--<link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.2" rel="stylesheet" />-->
 </head>
 
 <body>
@@ -150,6 +159,14 @@
                             </div>
                         </div>-->
 
+                        <h2>Senarai Nama</h2>
+                        @foreach($raw_echo as $active_list)
+                            <h6 class="mb-0 text-sm">{{ $active_list->Name }}</h6>
+                            <span class="badge badge-sm bg-gradient-primary">{{ $active_list->Status }}</span>
+                            <p class="text-xs text-secondary mb-0">{{ $active_list->dateTime }}</p>
+                            <span class="badge badge-sm bg-gradient-primary">{{ $active_list->Status }}</span>
+                        @endforeach
+
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--green" type="submit">Tambah Rekod</button>
                             <!-- reroute to form_active (save and return(redirect)) -->
@@ -174,10 +191,6 @@
     <script src="/vendor/select2/select2.min.js"></script>
     <script src="/vendor/datepicker/moment.min.js"></script>
     <script src="/vendor/datepicker/daterangepicker.js"></script>
-
-    <!-- Main JS-->
-    <script src="/js/global_form.js"></script>
-
 </body>
 
 </html>
