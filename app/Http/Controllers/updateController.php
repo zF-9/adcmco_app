@@ -97,8 +97,12 @@ class updateController extends Controller
         //$dateToday->modify('-1 day');
         //dd($dateYesterday);
 
-        $data_echo = Active::where('ref_key', '=', $id_a)->where('dateTime', '=', $dateYesterday)->get();
-        dd($data_echo);
+        $data_echo = Active::where('ref_key', '=', $id_a)->where('dateTime', '=', $dateYesterday)
+                    ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                    ->get();
+        //dd($data_echo);
+
+        return view('tables', ['raw_echo'=>$data_echo]);
     }
 
 }
