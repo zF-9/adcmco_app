@@ -39,12 +39,19 @@ class updateController extends Controller
         $agc_name = $ag_name[0];
         $agc_id = $ag_idn[0];
 
-        //dd($agc_id);
+        $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)
+                    ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                    ->get();
 
-        $data_echo = active::where('ref_key', '=', $agc_id)->where('dateTime', '=', $dateYesterday)->join('agencies', 'agencies.id_n', 'actives.ref_key')->get();
-        //dd($data_echo);
+        $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateToday)
+                    ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                    ->get();
+      
+        //dd($data_clone, $data_echo);
 
-        return view('Form_active', ['name_unique'=>$agc_name, 'id_unique'=>$agc_id, 'raw_echo'=>$data_echo]);
+        return view('Form_active', ['name_unique'=>$agc_name, 'id_unique'=>$agc_id, 
+                    'raw_echo'=>$data_echo, 'raw_clone'=>$data_clone, 'Today'=>$dateToday, 
+                    'Yesterday'=>$dateYesterday]);
     }
 
     public function add_record($name_unique, $id_unique){
@@ -54,7 +61,7 @@ class updateController extends Controller
     public function update_active(Request $request) {
         $dateToday = date('d/m/Y'); 
         //$dateYesterday = $dateToday - 1;
-        $dateYesterday = date('d/m/Y',strtotime("-1 days"));
+        $dateYesterday = date('d/m/Y',strtotime("-2 days"));
         //$dateToday->modify('-1 day');
         //dd($dateYesterday);
 
@@ -71,12 +78,19 @@ class updateController extends Controller
 
         $active_case->save();
 
-        $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)->get();
-        //->join('agencies', 'agencies.id_n', 'actives.ref_key')
-        //->get();
-        dd($dateYesterday);
+        $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)
+                    ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                    ->get();
 
-        return view('Form_active', ['name_unique'=>$agency_session, 'id_unique'=>$agency_id, 'raw_echo'=>$data_echo]);
+        $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateToday)
+                    ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                    ->get();
+      
+        //dd($data_clone, $data_echo);
+
+        return view('Form_active', ['name_unique'=>$agency_session, 'id_unique'=>$agency_id, 
+                    'raw_echo'=>$data_echo, 'raw_clone'=>$data_clone, 'Today'=>$dateToday, 
+                    'Yesterday'=>$dateYesterday]);
     } 
 
     public function update_surveilance() {

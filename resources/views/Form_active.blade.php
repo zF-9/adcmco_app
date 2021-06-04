@@ -26,11 +26,11 @@
     <link href="/css/main_form.css" rel="stylesheet" media="all">
 
     <!-- Nucleo Icons -->
-    <link href="/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <!--<link href="/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />-->
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-    <link href="/css/nucleo-svg.css" rel="stylesheet" />
+    <!--<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="/css/nucleo-svg.css" rel="stylesheet" />-->
     <!-- CSS Files -->
     <!--<link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.2" rel="stylesheet" />-->
 </head>
@@ -93,7 +93,36 @@
                         </div>
 
                         <div class="row row-space">
-                            <!--<div class="col-2">
+                            <div clas="row">
+                                <h2>Kes Aktif</h2>
+                            </div>
+                        <!--<div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Tarikh</label>
+                                    <div class="input-group-icon">
+                                        <input class="input--style-4 js-datepicker" type="text" name="datentime">
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                    </div>
+                                </div>-->
+                        </div>
+                        <!-- remove datepicker or not ?; add table list to show added record on Today() -->
+
+                        <div class="row row-space">
+                            <div class="col-6">
+                                @empty($raw_echo)
+                                    <p>empty</p>
+                                @endempty
+                                @isset($raw_echo)                            
+                                    <h3>{{ $Today }}</h3>
+                                    <hr>
+                                    @foreach($raw_echo as $active_list)
+                                        <h6 class="mb-0 text-sm" style="font-weight:bold">{{ $active_list->Name }}</h6>
+                                        <span class="badge badge-sm bg-gradient-primary">{{ $active_list->Status }}</span>
+                                @endforeach   
+                                @endisset
+                            </div>
+
+                         <!--<div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Tarikh</label>
                                     <div class="input-group-icon">
@@ -102,33 +131,35 @@
                                     </div>
                                 </div>
                             </div>-->
-                            <div class="col-2">
-                                <!--<div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Female
-                                            <input type="radio" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
+                            <div class="col-6">
+                                @empty($raw_clone)
+                                    <p>empty</p>
+                                @endempty
+                                @isset($raw_clone)
+                                    <h3>{{ $Yesterday }}</h3>
+                                    <hr>
+                                    @foreach($raw_clone as $active_prev)
+                                        <span class="badge badge-sm bg-gradient-primary" >{{ $active_prev->Name }}</span>
+                                        <h6 class="mb-0 text-sm" style="font-weight:bold">{{ $active_prev->Status }}</h6>    
+                                    @endforeach   
+                                @endisset
+                            </div>
+
+                                    <!--<div class="input-group">
+                                        <label class="label">Gender</label>
+                                        <div class="p-t-10">
+                                            <label class="radio-container m-r-45">Male
+                                                <input type="radio" checked="checked" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="radio-container">Female
+                                                <input type="radio" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>-->
-                            </div>
                         </div>
-
-                        <!--<div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Tarikh</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="datentime">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-                                    </div>
-                                </div>
-                        </div>-->
-                        <!-- remove datepicker or not ?; add table list to show added record on Today() -->
 
                         <!--<div class="row row-space">
                             <div class="col-2">
@@ -159,14 +190,6 @@
                             </div>
                         </div>-->
 
-                        <h2>Senarai Nama</h2>
-                        @foreach($raw_echo as $active_list)
-                            <h6 class="mb-0 text-sm">{{ $active_list->Name }}</h6>
-                            <span class="badge badge-sm bg-gradient-primary">{{ $active_list->Status }}</span>
-                            <p class="text-xs text-secondary mb-0">{{ $active_list->dateTime }}</p>
-                            <span class="badge badge-sm bg-gradient-primary">{{ $active_list->Status }}</span>
-                        @endforeach
-
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--green" type="submit">Tambah Rekod</button>
                             <!-- reroute to form_active (save and return(redirect)) -->
@@ -191,6 +214,9 @@
     <script src="/vendor/select2/select2.min.js"></script>
     <script src="/vendor/datepicker/moment.min.js"></script>
     <script src="/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global_form.js"></script>
 </body>
 
 </html>
