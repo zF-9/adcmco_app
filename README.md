@@ -11,17 +11,18 @@
 
 Attendance App for CMCO - Covid-19 Case reporting: Revamp from cloud based migration to dedicated app
 
-Application's Homepage
+Markup :  ## Application's Homepage ##
 <img src="https://github.com/zF-9/adcmco_app/blob/863974a58f064c332abef37b531b1559abacb0bd/public/img/Source_Img/cropped-home.jpg">
 
-New Features:
-    i) Track active cases personnel record.
-    ii) active cases & passive cases segregate to different page
-    iii) removed features: QR code utilizations
-    iv) added features: Search query of agency's name
-    v) Addons: Analytic page (Under Development)
+Markup :  ## New Features ##
+ Markup : 1.Track active cases personnel record.
+          2. active cases & passive cases segregate to different page.
+          3. removed features: QR code utilizations.
+          4. added features: Search query of agency's name.
+          5. Addons: Analytic page (Under Development).
 
-Application's Demo
+
+Markup :  ## Application's Demo ##
 <img src="https://github.com/zF-9/adcmco_app/blob/0fde493323ad9a5c089e033727e50a3bafbdbb92/public/img/Source_Img/Animation.gif">
 
 
