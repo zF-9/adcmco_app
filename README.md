@@ -18,8 +18,4 @@ Application's Demo
 <img src="https://github.com/zF-9/adcmco_app/blob/0fde493323ad9a5c089e033727e50a3bafbdbb92/public/img/Source_Img/Animation.gif">
 
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 05a7f6df8b5c9aefc940224edd007ac915e8ad44
