@@ -12,7 +12,7 @@
 Attendance App for CMCO - Covid-19 Case reporting: Revamp from cloud based migration to dedicated app
 
 Application's Homepage
-<img src="https://github.com/zF-9/adcmco_app/blob/0fde493323ad9a5c089e033727e50a3bafbdbb92/public/img/Source_Img/screencapture-localhost-4848-2021-06-29-14_32_55.png">
+<img src="https://github.com/zF-9/adcmco_app/blob/863974a58f064c332abef37b531b1559abacb0bd/public/img/Source_Img/cropped-home.jpg">
 
 Application's Demo
 <img src="https://github.com/zF-9/adcmco_app/blob/0fde493323ad9a5c089e033727e50a3bafbdbb92/public/img/Source_Img/Animation.gif">
