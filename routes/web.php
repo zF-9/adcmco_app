@@ -26,12 +26,20 @@ Route::get('/analytics', function () {
     return view('dashboard');
 });
 
-Route::get('/test', function () {
+Route::get('/homepage', function () {
     return view('home_alternate');
+});
+
+Route::get('/thankyou', function() {
+    return view('thankyou');
 });
 
 Route::get('/form', function () {
     return view('Form_surveilance');
+});
+
+Route::get('/dashboard-analytics', function() {
+    return view('Dashboard-analytics');
 });
 
 Route::get('/proto', function () {

@@ -42,7 +42,9 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Covid-19 Cases Form</h2>
-                    
+                    @if($ErrorMsg != 'none')
+                        <div class="error" style="color:red"> {{ $ErrorMsg }}</div>
+                    @endif
                     
                     <form class="contact-form" role="form" action="/active_cases" method="POST" enctype="multipart/form-data"> 
                     {{ csrf_field() }} 
@@ -75,7 +77,7 @@
                             <label class="label">Status</label>
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="status">
-                                    <option disabled="disabled" selected="selected">Choose option</option>
+                                    <option disabled="disabled" selected="selected" >Choose option</option>
                                     <option>Kuarantin Hospital</option>
                                     <option>Kuarantin Pusat</option>
                                     <option>Kuarantin Rumah</option>

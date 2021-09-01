@@ -32,6 +32,7 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Covid-19 Cases Form</h2>
+                    <div class="error" style="color:orange">* Bilangan staff yang dibawah pemerhatian</div>
                     <form class="contact-form" role="form" action="/surveilance_cases" method="POST" enctype="multipart/form-data"> 
                     {{ csrf_field() }} 
 
@@ -138,7 +139,7 @@
                         </div>-->
 
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Update</button>
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Update</button>
                             <!-- reroute to form_active -->
                         </div>
                     </form>
@@ -156,6 +157,37 @@
 
     <!-- Main JS-->
     <script src="/js/global_form.js"></script>
+
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header flex-column">
+            <div class="icon-box">
+            <i class="fa fa-sign-out"></i>
+            </div>						
+            <h4 class="modal-title w-100">Log Keluar?</h4>	
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+            <p>Andakah Anda Ingin Log Keluar? Klik Butang Hijau Untuk Sahkan</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+            
+            <button type="button" class="btn btn-success" ><a onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();" style="color:white">Log Keluar</a></button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" >Batal</button>
+                
+            <form id="logout-form" action="" method="POST" style="display: none;">
+                @csrf
+            </form>
+            
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Logout Modal -->    
 
 </body>
 
