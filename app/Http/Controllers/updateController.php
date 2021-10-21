@@ -13,9 +13,85 @@ use Intervention\Image\ImageManagerStatic;
 use App\Active;
 use App\Agencies;
 use App\Surveilance;
+use Carbon\Carbon;
 
 class updateController extends Controller
 {
+    public function datatable() {
+        $active_list = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->get();
+        //dd($active_list);
+        $k_p = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->get();
+        $k_h = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->get();
+        $k_r = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->get();
+        $s = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->get();
+        $m = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->get();   
+        
+        $passive_list = DB::table('surveilances')->join('agencies', 'agencies.id_n', 'surveilances.ref_key')->get();
+        //dd($passive_list);
+        $hq = $passive_list->sum('House_Q');
+        $qc = $passive_list->sum('Q_Center');
+
+        return view('tables', ['active'=>$active_list, 'passive'=> $passive_list, 'kp'=>$k_p, 'kh'=> $k_h, 'kr'=> $k_r, 's'=> $s, 'm' => $m, 'hq' => $hq, 'qc' => $qc ]);
+    }
+
+    public function chartboard(){
+        $active_list = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->get();
+        //dd($active_list);
+        $k_p = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->get();
+        $k_h = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->get();
+        $k_r = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->get();
+        $s = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->get();
+        $m = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->get();
+        //dd($k_r);
+
+        $passive_list = DB::table('surveilances')->join('agencies', 'agencies.id_n', 'surveilances.ref_key')->get();
+        //dd($passive_list);
+        $hq = $passive_list->sum('House_Q');
+        $qc = $passive_list->sum('Q_Center');
+        //dd([$hq, $qc]);
+        $MonthToday = date('m'); 
+        //$case_yesterday = $active_list::where('updated_at', date('m'))->get();
+        //dd($case_yesterday);
+
+        //$hq_month = $passive_list->where('updated_at', '=', $MonthToday)->get();
+        //dd($dateToday);
+
+        $raw = Active::query()
+        ->whereYear('updated_at', now())//->year -1)
+        ->get()
+        ->pluck('updated_at');
+
+        //dd($raw);
+        
+        $data = [];
+        foreach ($raw as $i=>$date) {
+            $data[$i] = Carbon::parse($date)->format('m');
+            if(  Carbon::parse($date)->format('m')[0] != 0 ){
+                $data[$i] = Carbon::parse($date)->format('m');
+            }else{
+                $data[$i] = str_replace('0','',Carbon::parse($date)->format('m'));
+            }
+            //dd($i);
+        }
+
+        //dd($data);
+        
+        $dataValues = array_count_values($data);
+        
+        //dd($dataValues);
+        //dd($MonthToday);
+
+        /*if (array_key_exists($MonthToday, $dataValues))
+        {
+            dd("yup this one exist");
+        }  
+        else {
+            dd("nope can't find any");
+        }*/
+
+        return view('dashboard', ['active'=>$active_list, 'passive'=> $passive_list, 'kp'=>$k_p, 'kh'=> $k_h, 'kr'=> $k_r, 's'=> $s, 'm' => $m, 'hq' => $hq, 'qc' => $qc, 'under_s' => $dataValues ]);
+    }
+
     public function select_agency(Request $request) {
         $agency_id = request('agencies'); 
         //dd($agency_id); //index on DB start with 0 = find workaround; 

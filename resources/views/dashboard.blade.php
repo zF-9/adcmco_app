@@ -22,7 +22,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <title>
-    Soft UI Dashboard by Creative Tim
+    Chart board
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -42,7 +42,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute right-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="../pages/dashboard.html">
         <img src="/img/logo-ct.png" class="navbar-brand-img h-100" alt="...">
-        <span class="ms-1 font-weight-bold">Soft UI Dashboard</span>
+        <span class="ms-1 font-weight-bold"> UI Dashboard</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -88,7 +88,7 @@
             <span class="nav-link-text ms-1">Tables</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link  " href="../pages/billing.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -107,8 +107,9 @@
             </div>
             <span class="nav-link-text ms-1">Billing</span>
           </a>
-        </li>
-        <li class="nav-item">
+        </li>-->
+        <!-- here -->
+        <!--<li class="nav-item">
           <a class="nav-link  " href="../pages/rtl.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -194,10 +195,10 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li>-->
       </ul>
     </div>
-    <div class="sidenav-footer mx-3 mt-3 pt-3">
+    <!--<div class="sidenav-footer mx-3 mt-3 pt-3">
       <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
         <div class="full-background" style="background-image: url('/img/curved-images/white-curved.jpeg')"></div>
         <div class="card-body text-left p-3 w-100">
@@ -211,7 +212,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </aside>
   <main class="main-content mt-1 border-radius-lg">
     <!-- Navbar -->
@@ -338,9 +339,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Money</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Kuarantin (Pusat Kuarantin)</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $53,000
+                      {{ $kp->count() }}
                       <span class="text-success text-sm font-weight-bolder">+55%</span>
                     </h5>
                   </div>
@@ -360,9 +361,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Today's Users</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Kuarantin (Rumah)</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
+                    {{ $kr->count() }}
                       <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                   </div>
@@ -382,9 +383,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">New Clients</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Sembuh</p>
                     <h5 class="font-weight-bolder mb-0">
-                      +3,462
+                    {{ $s->count() }}
                       <span class="text-danger text-sm font-weight-bolder">-2%</span>
                     </h5>
                   </div>
@@ -404,9 +405,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Mati</p>
                     <h5 class="font-weight-bolder mb-0">
-                      $103,430
+                    {{ $m->count() }}
                       <span class="text-success text-sm font-weight-bolder">+5%</span>
                     </h5>
                   </div>
@@ -421,7 +422,7 @@
           </div>
         </div>
       </div>
-      <div class="row mt-4">
+      <!--<div class="row mt-4">
         <div class="col-lg-7 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
@@ -464,17 +465,33 @@
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="row mt-4">
+      <div class="col-lg-7">
+          <div class="card">
+            <div class="card-header pb-0">
+              <h6>Kes Kumulatif (Aktif)</h6>
+              <p class="text-sm">
+                <i class="fa fa-arrow-up text-success"></i>
+                <span class="font-weight-bold">4% more</span> in 2021
+              </p>
+            </div>
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="chart-line" class="chart-canvas" height="300px"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>        
         <div class="col-lg-5 mb-lg-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
                 <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170px"></canvas>
+                  <canvas id="chart-bars" class="chart-canvas" height="180px"></canvas>
                 </div>
               </div>
-              <h6 class="ms-2 mt-4 mb-0"> Active Users </h6>
+              <h6 class="ms-2 mt-4 mb-0"> Kes Kumulatif (Dalam Pemerhatian) </h6>
               <p class="text-sm ms-2"> (<span class="font-weight-bolder">+23%</span>) than last week </p>
               <div class="container border-radius-lg">
                 <div class="row">
@@ -495,9 +512,9 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Users</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Pusat Kuarantin</p>
                     </div>
-                    <h4 class="font-weight-bolder">36K</h4>
+                    <h4 class="font-weight-bolder">{{$qc}}</h4>
                     <div class="progress w-75">
                       <div class="progress-bar bg-dark w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
@@ -521,14 +538,14 @@
                           </g>
                         </svg>
                       </div>
-                      <p class="text-xs mt-1 mb-0 font-weight-bold">Clicks</p>
+                      <p class="text-xs mt-1 mb-0 font-weight-bold">Kuarantin Rumah</p>
                     </div>
-                    <h4 class="font-weight-bolder">2m</h4>
+                    <h4 class="font-weight-bolder">{{$hq}}</h4>
                     <div class="progress w-75">
                       <div class="progress-bar bg-dark w-90" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
-                  <div class="col-3 py-3 ps-0">
+                  <!--<div class="col-3 py-3 ps-0">
                     <div class="d-flex mb-2">
                       <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-warning text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="10px" height="10px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -551,8 +568,8 @@
                     <div class="progress w-75">
                       <div class="progress-bar bg-dark w-30" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                  </div>
-                  <div class="col-3 py-3 ps-0">
+                  </div>-->
+                  <!--<div class="col-3 py-3 ps-0">
                     <div class="d-flex mb-2">
                       <div class="icon icon-shape icon-xxs shadow border-radius-sm bg-gradient-danger text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="10px" height="10px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -576,24 +593,8 @@
                     <div class="progress w-75">
                       <div class="progress-bar bg-dark w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
-                  </div>
+                  </div>-->
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="card">
-            <div class="card-header pb-0">
-              <h6>Sales overview</h6>
-              <p class="text-sm">
-                <i class="fa fa-arrow-up text-success"></i>
-                <span class="font-weight-bold">4% more</span> in 2021
-              </p>
-            </div>
-            <div class="card-body p-3">
-              <div class="chart">
-                <canvas id="chart-line" class="chart-canvas" height="300px"></canvas>
               </div>
             </div>
           </div>
@@ -605,10 +606,10 @@
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Projects</h6>
+                  <h6>Senarai Staff Yang Bergejala</h6>
                   <p class="text-sm mb-0">
                     <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">30 done</span> this month
+                    <span class="font-weight-bold ms-1">{{$active->count()}}</span> this month
                   </p>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
@@ -630,27 +631,33 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Agensi</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <!-- from Here -->
+                    @foreach($active as $list)
+                    @if($loop->index < 7)
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">
+                            <!--<img src="/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">-->
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Soft UI XD Version</h6>
+                            <h6 class="mb-0 text-sm">{{$list->Nama_agency}}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
                         <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                        <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{$list->Name}}</h6>
+                          </div>
+                        <!--<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img alt="Image placeholder" src="/img/team-1.jpg">
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
@@ -661,11 +668,11 @@
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img alt="Image placeholder" src="/img/team-4.jpg">
-                          </a>
+                          </a>-->
                         </div>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $14,000 </span>
+                        <span class="text-xs font-weight-bold"> {{$list->Status}} </span>
                       </td>
                       <td class="align-middle">
                         <div class="progress-wrapper w-75 mx-auto">
@@ -680,7 +687,10 @@
                         </div>
                       </td>
                     </tr>
-                    <tr>
+                    @endif
+                    @endforeach
+                    <!-- to Here -->
+                    <!--<tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
@@ -867,7 +877,7 @@
                           </div>
                         </div>
                       </td>
-                    </tr>
+                    </tr>-->
                   </tbody>
                 </table>
               </div>
@@ -953,14 +963,14 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Digital Government Division</a>
                 for a better web.
               </div>
             </div>
             <div class="col-lg-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Digital Government Division</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
@@ -1050,7 +1060,8 @@
   <script src="/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="/js/plugins/chartjs.min.js"></script>
   <script src="/js/plugins/Chart.extension.js"></script>
-  <script>
+
+  <script type="text/javascript">
     var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
@@ -1064,6 +1075,7 @@
           pointRadius: 0,
           backgroundColor: "#fff",
           data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+          /*data: [],*/
           maxBarThickness: 6
         }, ],
       },
@@ -1107,6 +1119,9 @@
         },
       },
     });
+
+    //var arr = {!! json_encode($under_s) !!};
+    //alert(object);
 
     var ctx2 = document.getElementById("chart-line").getContext("2d");
 
@@ -1214,6 +1229,7 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

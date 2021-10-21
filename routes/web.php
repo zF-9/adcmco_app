@@ -23,6 +23,11 @@ Route::get('/', function () {
 
 Route::get('/analytics', function () {
     //return view('welcome');
+    return view('tables');
+});
+
+Route::get('/charts', function () {
+    //return view('welcome');
     return view('dashboard');
 });
 
@@ -46,6 +51,9 @@ Route::get('/proto', function () {
     $list_all = Agencies::all(['id_n', 'Nama_agency']);
     return view('agency_select', ['list'=>$list_all]);
 });
+
+Route::get('debug', 'updateController@chartboard');
+Route::get('debugger', 'updateController@datatable');
 
 //Route::get('/selected/{id}/{agency}', 'updateController@add_record');
 Route::get('/table/{id_a}', 'updateController@tableview');
