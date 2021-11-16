@@ -35,6 +35,9 @@ class updateController extends Controller
     }
 
     public function chartboard(){
+        $DateToday = date('d/m/y'); 
+        $DateYesterday = date('d/m/Y',strtotime("-1 days"));
+        
         $active_list = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->get();
         //dd($active_list);
         $k_p = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->get();
@@ -42,21 +45,33 @@ class updateController extends Controller
         $k_r = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->get();
         $s = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->get();
         $m = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->get();
-        //dd($k_r);
+
+
+
+        $k_p_yd =  DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->where('dateTime', '=', $DateYesterday)->get();
+        $K_h_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->where('dateTime', '=', $DateYesterday)->get();
+        $k_r_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->where('dateTime', '=', $DateYesterday)->get();
+        $s_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->where('dateTime', '=', $DateYesterday)->get();
+        $m_yd = Active::join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->where('dateTime', '=', $DateYesterday)->get();
+        //dd($m_yd);
 
         $passive_list = DB::table('surveilances')->join('agencies', 'agencies.id_n', 'surveilances.ref_key')->get();
         //dd($passive_list);
         $hq = $passive_list->sum('House_Q');
         $qc = $passive_list->sum('Q_Center');
+
+        $pui_qc = $passive_list->where('dateTime', '=', $DateToday)->count();
+        //$pui_hq = $passive_list->where('')->where('dateTime', '=', $DateToday)->count();
+
         //dd([$hq, $qc]);
-        $MonthToday = date('m'); 
+
         //$case_yesterday = $active_list::where('updated_at', date('m'))->get();
         //dd($case_yesterday);
 
         //$hq_month = $passive_list->where('updated_at', '=', $MonthToday)->get();
-        //dd($dateToday);
+        //dd($pui_qc);
 
-        $raw = Active::query()
+        $raw = Surveilance::query()
         ->whereYear('updated_at', now())//->year -1)
         ->get()
         ->pluck('updated_at');
@@ -77,6 +92,10 @@ class updateController extends Controller
         //dd($data);
         
         $dataValues = array_count_values($data);
+
+        //$timestemp = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('dateTime', '=', $DateToday)->get();
+        //$month = Carbon::createFromFormat('d/m/y', $timestemp)->month;
+        //dd($month);
         
         //dd($dataValues);
         //dd($MonthToday);

@@ -408,6 +408,7 @@
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Mati</p>
                     <h5 class="font-weight-bolder mb-0">
                     {{ $m->count() }}
+              
                       <span class="text-success text-sm font-weight-bolder">+5%</span>
                     </h5>
                   </div>
@@ -631,10 +632,10 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Agensi</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Agensi</th>
+                      <!--<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>-->
                     </tr>
                   </thead>
                   <tbody>
@@ -642,16 +643,6 @@
                     @foreach($active as $list)
                     @if($loop->index < 7)
                     <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <!--<img src="/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">-->
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{$list->Nama_agency}}</h6>
-                          </div>
-                        </div>
-                      </td>
                       <td>
                         <div class="avatar-group mt-2">
                         <div class="d-flex flex-column justify-content-center">
@@ -674,7 +665,7 @@
                       <td class="align-middle text-center text-sm">
                         <span class="text-xs font-weight-bold"> {{$list->Status}} </span>
                       </td>
-                      <td class="align-middle">
+                      <!--<td class="align-middle">
                         <div class="progress-wrapper w-75 mx-auto">
                           <div class="progress-info">
                             <div class="progress-percentage">
@@ -685,7 +676,17 @@
                             <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                           </div>
                         </div>
-                      </td>
+                      </td>-->
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div>
+                            <!--<img src="/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">-->
+                          </div>
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">{{$list->Nama_agency}}</h6>
+                          </div>
+                        </div>
+                      </td>                      
                     </tr>
                     @endif
                     @endforeach
