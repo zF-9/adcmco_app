@@ -29,5 +29,6 @@ Attendance App for CMCO - Covid-19 Case reporting: Revamp from cloud based migra
 ## Live Data Dashboard ##
 <a href="http://zf-9.github.io/LiveDashboardv1.03/Dashboard-analytics.html">Live Dashboard Prototype</a>
 
-##Prototype analytic dashboard
-<img src="https://github.com/zF-9/adcmco_app/blob/062d0d212a57d88f069154250e8c11e4f2b75ef9/public/img/debug.PNG>
+## Prototype analytic dashboard ##
+<img src="https://github.com/zF-9/adcmco_app/blob/062d0d212a57d88f069154250e8c11e4f2b75ef9/public/img/debug.PNG">
+          
