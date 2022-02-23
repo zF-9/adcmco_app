@@ -54,6 +54,7 @@ Route::get('/proto', function () {
 
 Route::get('debug', 'updateController@chartboard');
 Route::get('debugger', 'updateController@datatable');
+Route::get('log_data', 'updatecontroller@log_data');
 
 //Route::get('/selected/{id}/{agency}', 'updateController@add_record');
 Route::get('/table/{id_a}', 'updateController@tableview');
