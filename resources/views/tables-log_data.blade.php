@@ -34,6 +34,13 @@
   <link href="/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="/css/soft-ui-dashboard.css?v=1.0.2" rel="stylesheet" />
+    <!-- Vendor CSS-->
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <!-- Icons font CSS-->
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+
 </head>
 
 <body class="g-sidenav-show   bg-gray-100">
@@ -339,7 +346,7 @@
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
+                <!--<table class="table align-items-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
@@ -352,8 +359,8 @@
                   <tbody>
                     <tr>
 
-                    <!-- Start -->
-                    <!--<tr>
+                    
+                    <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
@@ -492,9 +499,10 @@
                           Edit
                         </a>
                       </td>
-                    </tr>-->
+                    </tr>
                   </tbody>
-                </table>
+                </table>-->
+             
               </div>
             </div>
           </div>
@@ -505,16 +513,46 @@
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Data Laporan Kes COVID-19</h6>
+
+              <div class="container">
+              <div class="row">
+                <div class="col-sm">
+                <div class="input-group">
+                <form class="contact-form" role="form" action="/filtering" method="POST" enctype="multipart/form-data"> 
+                    {{ csrf_field() }}                   
+                    <label class="label">DATE</label>
+                    <div class="input-group-icon" style="padding-left: 6px">
+                      <input class="input--style-4 js-datepicker" type="text" name="date_time" >
+                      <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                    </div>
+                  </div>  
+                </div>
+                <div class="col-sm">
+                  <div class="p-t-15" style="padding-top:12px">
+                    <button class="btn btn--radius-2 btn--blue btn-primary" type="submit">UPDATE</button>
+                  </div> 
+                </div>
+                <!--<div class="col-sm">
+                 
+                    </div>
+                </div>-->
+                </form>
+              </div>
+
+
             </div>
+            </br>
+
+            
+            </br>      
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center justify-content-center mb-0">
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7" rowspan="2">Agensi</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Tarikh</th>
+                      <!--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>-->
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">H</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">P.K.</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">K.R</th>
@@ -522,12 +560,11 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">M</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">K.R(PUI/PUS)</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">P.K(PUI/PUS)</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Tarikh</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($list_agencies as $key => $list)
-                    
-                        
+                  @foreach($list_agencies as $key => $list)   
                     <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -539,14 +576,14 @@
                           </div>
                         </div>
                       </td>
-                      <td>
+                      <!--<td>
                         <div class="avatar-group mt-2">
                         <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">
 
                             </h6>
                           </div>
-                        <!--<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
+                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img alt="Image placeholder" src="/img/team-1.jpg">
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
@@ -557,7 +594,7 @@
                           </a>
                           <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
                             <img alt="Image placeholder" src="/img/team-4.jpg">
-                          </a>-->
+                          </a>
                         </div>
                       </td>
                       <td class="align-middle text-center text-sm">
@@ -570,7 +607,7 @@
                          
 
                         </span>
-                      </td>
+                      </td>-->
                       <td class="align-middle text-center text-sm">
                         <span class="text-xs font-weight-bold">
                         <?php $i=0 ?>  
@@ -578,12 +615,12 @@
                             @if( $keyword->Nama_agency == $key)                                             
                                 @if($keyword->Status  != 'Kuarantin Rumah')
                                     {{''}}                                           
-                                @else 
-                                    {{ $i }}
-                                <?php $i++ ?>
+                                @else                                   
+                                <?php $i++?>                                
                                 @endif                                            
-                            @endif                                      
-                        @endforeach                             
+                            @endif                                          
+                        @endforeach  
+                        <?php echo $i;?>                           
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">
@@ -594,11 +631,11 @@
                                 @if($keyword->Status  != 'Kuarantin Pusat')
                                     {{''}}                                           
                                 @else 
-                                    {{ $i }}
                                 <?php $i++ ?>
                                 @endif                                            
                             @endif                                      
-                        @endforeach                             
+                        @endforeach  
+                        <?php echo $i;?>                            
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">
@@ -609,11 +646,11 @@
                                 @if($keyword->Status  != 'Kuarantin Rumah')
                                     {{''}}                                           
                                 @else 
-                                    {{ $i }}
                                 <?php $i++ ?>
                                 @endif                                            
                             @endif                                      
-                        @endforeach                             
+                        @endforeach  
+                        <?php echo $i;?>                            
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">
@@ -624,11 +661,11 @@
                                 @if($keyword->Status  != 'Sembuh')
                                     {{''}}                                           
                                 @else 
-                                    {{ $i }}
                                 <?php $i++ ?>
                                 @endif                                            
                             @endif                                      
-                        @endforeach                             
+                        @endforeach 
+                        <?php echo $i;?>                             
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">
@@ -639,11 +676,11 @@
                                 @if($keyword->Status  != 'Mati')
                                     {{''}}                                           
                                 @else 
-                                    {{ $i }}
                                 <?php $i++ ?>
                                 @endif                                            
                             @endif                                      
-                        @endforeach                             
+                        @endforeach    
+                        <?php echo $i;?>                          
                         </span>
                       </td>
                       <!-- K.P(PUI/PUS) -->
@@ -658,6 +695,15 @@
                         <span class="text-xs font-weight-bold">  
                          
 
+                        </span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="text-xs font-weight-bold">  
+                        @foreach($list as $index => $keyword) 
+                          @if($loop->last)
+                            {{$keyword->dateTime}}
+                          @endif
+                        @endforeach
                         </span>
                       </td>
                       <!--<td class="align-middle">
@@ -798,6 +844,16 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/js/soft-ui-dashboard.min.js?v=1.0.2"></script>
+    <!-- Jquery JS-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="js/global_form.js"></script>
+
 </body>
 
 </html>

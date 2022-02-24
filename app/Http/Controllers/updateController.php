@@ -35,48 +35,33 @@ class updateController extends Controller
     }
 
     public function log_data() {
-        //$agencies_list = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->groupBy('Nama_agency')->get();
+        $DateToday = date('d/m/y'); 
+        $DateYesterday = date('d/m/Y',strtotime("-1 days"));
+        //get query from datepicker from front end and then refresh using the same page
+        
         $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->get();//->toArray();
-        $agency_count = $a_list->groupBy('Nama_agency');//->toArray();
+        $agency_count = $a_list->groupBy('Nama_agency');//->where('dateTime', '=', $DateYesterday);//->toArray();
 
         $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->get();
-        $survl_count = $b_list->groupBy('Nama_agency');
-        /*foreach($a_list as $list){
-            //$list->where('Status', '=', 'Kuarantin Pusat')->count();
-            for ($i=0; $i < count($list); $i++) {
-                dd($list);
-            }
-        }*/
-        /*for ($i=0; $i < count($a_list); $i++) {
-            //dd($a_list);
-            $a_list::where('Status', '=', 'Kuarantin Pusat')->count();
-        }*/
-        dd($survl_count);
-        /*foreach($agency_count as $count){
-            /*foreach($count as $key => $list) {
-                $H = $list->where('Status', '=', 'Kuarantin Pusat')->count();
-                $PK = $list->where('Status', '=', 'Kuarantin Hospital')->count();
-                $KR = $list->where('Status', '=', 'Kuarantin Rumah')->count();
-                $S = $list->where('Status', '=', 'Sembuh')->count();
-                $M = $list->where('Status', '=', 'Mati')->count();
-            }
-            dd($count);
-        }*/
-        //dd($agency_count);
+        $survl_count = $b_list->groupBy('Nama_agency');//->where('dateTime', '=', $DateYesterday);
 
-        /*$k_p = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->get();
-        $k_h = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->get();
-        $k_r = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->get();
-        $s = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->get();
-        $m = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->get();   
-        
-        $passive_list = DB::table('surveilances')->join('agencies', 'agencies.id_n', 'surveilances.ref_key')->get();
-        //dd($passive_list);
-        $hq = $passive_list->sum('House_Q');
-        $qc = $passive_list->sum('Q_Center');*/
-        
-        //return view('tables-log_data', ['agencies'=>$agencies_list, 'passive'=> $passive_list, 'kp'=>$k_p, 'kh'=> $k_h, 'kr'=> $k_r, 's'=> $s, 'm' => $m, 'hq' => $hq, 'qc' => $qc ]);  
+        // check for day before record before front end
         return view('tables-log_data', ['list_agencies'=>$agency_count, 'list_surveil'=>$survl_count]);     
+    }
+
+    public function filter_log_data(Request $request) {
+        $datetime = request('date_time');    
+        //dd($datetime);  
+
+        $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTime', '=', $datetime)->get();//->toArray();
+        $agency_count = $a_list->groupBy('Nama_agency');//->toArray();
+
+        $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTime', '=', $datetime)->get();
+        $survl_count = $b_list->groupBy('Nama_agency');
+
+        //dd([$datetime, $agency_count]);
+        // check for day before record before front end
+        return view('tables-log_data', ['list_agencies'=>$agency_count, 'list_surveil'=>$survl_count]);          
     }
 
     public function chartboard(){
