@@ -56,7 +56,7 @@
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/dashboard.html">
+          <a class="nav-link  " href="debug">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -76,7 +76,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages/tables.html">
+          <a class="nav-link  active" href="/log_data">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -96,7 +96,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/billing.html">
+          <a class="nav-link  " href="/debugger">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -136,10 +136,10 @@
             <span class="nav-link-text ms-1">RTL</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
+        <!--<li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-        </li>
-        <li class="nav-item">
+        </li>-->
+        <!--<li class="nav-item">
           <a class="nav-link  " href="../pages/profile.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -201,7 +201,7 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li>-->
       </ul>
     </div>
     <!--<div class="sidenav-footer mx-3 mt-3 pt-3">
@@ -338,11 +338,11 @@
     </nav>-->
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <div class="row">
+      <!--<div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Authors table</h6>
+              <h6>Authors table</h6>-->
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -501,13 +501,13 @@
                       </td>
                     </tr>
                   </tbody>
-                </table>-->
+                </table>
              
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -529,7 +529,7 @@
                 </div>
                 <div class="col-sm">
                   <div class="p-t-15" style="padding-top:12px">
-                    <button class="btn btn--radius-2 btn--blue btn-primary" type="submit">UPDATE</button>
+                    <button class="btn btn--radius-2 btn--blue btn-primary" type="submit">FILTER</button>
                   </div> 
                 </div>
                 <!--<div class="col-sm">
@@ -554,7 +554,7 @@
                       <!--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>-->
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">H</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">P.K.</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">P.K</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">K.R</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">S</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">M</th>
@@ -613,7 +613,7 @@
                         <?php $i=0 ?>  
                         @foreach($list as $index => $keyword)                                                         
                             @if( $keyword->Nama_agency == $key)                                             
-                                @if($keyword->Status  != 'Kuarantin Rumah')
+                                @if($keyword->Status  != 'Kuarantin Hospital')
                                     {{''}}                                           
                                 @else                                   
                                 <?php $i++?>                                
@@ -685,23 +685,29 @@
                       </td>
                       <!-- K.P(PUI/PUS) -->
                       <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold">  
-                         
-
+                        <span class="text-xs font-weight-bold">                          
+                        @foreach($list as $index => $keyword) 
+                          @if($loop->last)
+                              {{ $keyword->Q_Center }} 
+                          @endif                          
+                        @endforeach
                         </span>
                       </td>
                       <!-- P.K(PUI/PUS) -->
                       <td class="align-middle text-center text-sm">
                         <span class="text-xs font-weight-bold">  
-                         
-
+                        @foreach($list as $index => $keyword) 
+                            @if($loop->last)
+                              {{ $keyword->House_Q }} 
+                          @endif
+                        @endforeach                         
                         </span>
                       </td>
                       <td class="align-middle text-center text-sm">
                         <span class="text-xs font-weight-bold">  
                         @foreach($list as $index => $keyword) 
                           @if($loop->last)
-                            {{$keyword->dateTime}}
+                            {{$keyword->dateTimeI}}
                           @endif
                         @endforeach
                         </span>

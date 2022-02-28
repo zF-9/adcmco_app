@@ -19,7 +19,7 @@ class CreateSurveilancesTable extends Migration
 
             $table->Integer('Q_Center');
             $table->Integer('House_Q');
-            $table->string('dateTime');
+            $table->string('dateTimeII');
 
             $table->unsignedInteger('ref_key')->index();
         });

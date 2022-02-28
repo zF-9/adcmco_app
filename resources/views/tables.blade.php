@@ -49,7 +49,7 @@
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/dashboard.html">
+          <a class="nav-link " href="../pages/dashboard.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -69,7 +69,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages/tables.html">
+          <a class="nav-link " href="/log_data">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -89,7 +89,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/billing.html">
+          <a class="nav-link  active" href="../pages/billing.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -109,7 +109,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/rtl.html">
+          <a class="nav-link " href="../pages/rtl.html">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>settings</title>
@@ -129,7 +129,8 @@
             <span class="nav-link-text ms-1">RTL</span>
           </a>
         </li>
-        <li class="nav-item mt-3">
+        <!-- start sini -->
+        <!--<li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
         </li>
         <li class="nav-item">
@@ -194,7 +195,7 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li>-->
       </ul>
     </div>
     <!--<div class="sidenav-footer mx-3 mt-3 pt-3">
@@ -331,7 +332,7 @@
     </nav>-->
     <!-- End Navbar -->
     <div class="container-fluid py-4">
-      <div class="row">
+      <!--<div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
@@ -492,14 +493,14 @@
                           Edit
                         </a>
                       </td>
-                    </tr>-->
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
@@ -515,7 +516,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Tarikh</th>
-                      <th></th>
+                      <!--<th></th>-->
                     </tr>
                   </thead>
                   <tbody>
@@ -536,7 +537,7 @@
                         <div class="avatar-group mt-2">
                         <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{$list->Name}}</h6>
-                          </div>
+                        </div>
                         <!--<a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
                             <img alt="Image placeholder" src="/img/team-1.jpg">
                           </a>
@@ -551,11 +552,11 @@
                           </a>-->
                         </div>
                       </td>
-                      <td class="align-middle text-center text-sm">
+                      <td class="align-middle  text-sm">
                         <span class="text-xs font-weight-bold"> {{$list->Status}} </span>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> {{$list->dateTime}} </span>
+                        <span class="text-xs font-weight-bold"> {{$list->dateTimeI}} </span>
                       </td>
                       <!--<td class="align-middle">
                         <div class="progress-wrapper w-75 mx-auto">

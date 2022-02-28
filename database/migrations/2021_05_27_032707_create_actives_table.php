@@ -19,7 +19,7 @@ class CreateActivesTable extends Migration
 
             $table->string('Name');
             $table->string('Status');
-            $table->string('dateTime');
+            $table->string('dateTimeI');
 
             $table->unsignedInteger('ref_key')->index();
         });

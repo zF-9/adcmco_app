@@ -49,7 +49,7 @@
     <div class="collapse navbar-collapse  w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  active" href="../pages/dashboard.html">
+          <a class="nav-link  active" href="/debug">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -69,7 +69,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/tables.html">
+          <a class="nav-link  " href="/log_data">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -88,8 +88,8 @@
             <span class="nav-link-text ms-1">Tables</span>
           </a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link  " href="../pages/billing.html">
+        <li class="nav-item">
+          <a class="nav-link  " href="/debugger">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>credit-card</title>
@@ -107,7 +107,7 @@
             </div>
             <span class="nav-link-text ms-1">Billing</span>
           </a>
-        </li>-->
+        </li>
         <!-- here -->
         <!--<li class="nav-item">
           <a class="nav-link  " href="../pages/rtl.html">
@@ -610,7 +610,7 @@
                   <h6>Senarai Staff Yang Bergejala</h6>
                   <p class="text-sm mb-0">
                     <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">{{$active->count()}}</span> this month
+                    <span class="font-weight-bold ms-1">{{$active->count()}}</span> active cases today
                   </p>
                 </div>
                 <div class="col-lg-6 col-5 my-auto text-end">
@@ -662,7 +662,7 @@
                           </a>-->
                         </div>
                       </td>
-                      <td class="align-middle text-center text-sm">
+                      <td class="align-middle text-sm">
                         <span class="text-xs font-weight-bold"> {{$list->Status}} </span>
                       </td>
                       <!--<td class="align-middle">
@@ -683,7 +683,7 @@
                             <!--<img src="/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3">-->
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{$list->Nama_agency}}</h6>
+                            <h6 class="mb-0 text-sm text-center">{{$list->Nama_agency}}</h6>
                           </div>
                         </div>
                       </td>                      

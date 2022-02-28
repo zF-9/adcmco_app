@@ -39,9 +39,10 @@ class updateController extends Controller
         $DateYesterday = date('d/m/Y',strtotime("-1 days"));
         //get query from datepicker from front end and then refresh using the same page
         
-        $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->get();//->toArray();
+        $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->get();//->toArray();
         $agency_count = $a_list->groupBy('Nama_agency');//->where('dateTime', '=', $DateYesterday);//->toArray();
 
+        //dd($agency_count);
         $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->get();
         $survl_count = $b_list->groupBy('Nama_agency');//->where('dateTime', '=', $DateYesterday);
 
@@ -53,12 +54,15 @@ class updateController extends Controller
         $datetime = request('date_time');    
         //dd($datetime);  
 
-        $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTime', '=', $datetime)->get();//->toArray();
+        $a_list = DB::table('agencies')->join('actives', 'actives.ref_key', 'agencies.id_n')
+                ->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')
+                ->orderBy('Nama_agency')->where('dateTimeII', '=', $datetime)->get();//->toArray();
         $agency_count = $a_list->groupBy('Nama_agency');//->toArray();
 
-        $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTime', '=', $datetime)->get();
+        $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTimeI', '=', $datetime)->get();
         $survl_count = $b_list->groupBy('Nama_agency');
 
+        //dd($agency_count);
         //dd([$datetime, $agency_count]);
         // check for day before record before front end
         return view('tables-log_data', ['list_agencies'=>$agency_count, 'list_surveil'=>$survl_count]);          
@@ -78,11 +82,11 @@ class updateController extends Controller
 
 
 
-        $k_p_yd =  DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->where('dateTime', '=', $DateYesterday)->get();
-        $K_h_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->where('dateTime', '=', $DateYesterday)->get();
-        $k_r_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->where('dateTime', '=', $DateYesterday)->get();
-        $s_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->where('dateTime', '=', $DateYesterday)->get();
-        $m_yd = Active::join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->where('dateTime', '=', $DateYesterday)->get();
+        $k_p_yd =  DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Pusat')->where('dateTimeI', '=', $DateYesterday)->get();
+        $K_h_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Hospital')->where('dateTimeI', '=', $DateYesterday)->get();
+        $k_r_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Kuarantin Rumah')->where('dateTimeI', '=', $DateYesterday)->get();
+        $s_yd = DB::table('actives')->join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Sembuh')->where('dateTimeI', '=', $DateYesterday)->get();
+        $m_yd = Active::join('agencies', 'agencies.id_n', 'actives.ref_key')->where('Status', '=', 'Mati')->where('dateTimeI', '=', $DateYesterday)->get();
         //dd($m_yd);
 
         $passive_list = DB::table('surveilances')->join('agencies', 'agencies.id_n', 'surveilances.ref_key')->get();
@@ -166,11 +170,11 @@ class updateController extends Controller
         $agc_name = $ag_name[0];
         $agc_id = $ag_idn[0];
 
-        $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)
+        $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateYesterday)
                     ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                     ->get();
 
-        $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateToday)
+        $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateToday)
                     ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                     ->get();
       
@@ -194,8 +198,9 @@ class updateController extends Controller
 
         $agency_session = request('unique_name');
         $agency_id =  request('unique_id');
-        $dateTime = request('datentime');
+        $dateTimeI = request('datentime');
         $Status = request('status');
+        $CaseName = request('first_name');
 
         if($Status == ""){
             $ag_idn = Agencies::where('id_n', '=', $agency_id)->pluck('id_n');
@@ -206,16 +211,42 @@ class updateController extends Controller
             $agc_name = $ag_name[0];
             $agc_id = $ag_idn[0];
     
-            $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)
+            $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateYesterday)
                         ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                         ->get();
     
-            $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateToday)
+            $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateToday)
                         ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                         ->get();
           
             //dd($data_clone, $data_echo);
             $Error = 'Sila pastikan ruangan *Status* dilengkapkan';
+            //dd($Error);
+    
+            return view('Form_active', ['name_unique'=>$agc_name, 'id_unique'=>$agc_id, 
+                        'raw_echo'=>$data_echo, 'raw_clone'=>$data_clone, 'Today'=>$dateToday, 
+                        'Yesterday'=>$dateYesterday, 'ErrorMsg'=>$Error]);
+        }
+
+        elseif($CaseName == ""){
+            $ag_idn = Agencies::where('id_n', '=', $agency_id)->pluck('id_n');
+            $ag_name = Agencies::where('id_n', '=', $agency_id)->pluck('Nama_agency');
+    
+            //dd([$ag_idn, $ag_name]);
+    
+            $agc_name = $ag_name[0];
+            $agc_id = $ag_idn[0];
+    
+            $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateYesterday)
+                        ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                        ->get();
+    
+            $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateToday)
+                        ->join('agencies', 'agencies.id_n', 'actives.ref_key')
+                        ->get();
+          
+            //dd($data_clone, $data_echo);
+            $Error = 'Sila pastikan ruangan *Nama* dilengkapkan';
             //dd($Error);
     
             return view('Form_active', ['name_unique'=>$agc_name, 'id_unique'=>$agc_id, 
@@ -229,15 +260,15 @@ class updateController extends Controller
             $active_case->Name = request('first_name');
             $active_case->Status = request('status');
             $active_case->ref_key = $agency_id;
-            $active_case->dateTime = $dateToday;
+            $active_case->dateTimeI = $dateToday;
     
             $active_case->save();
     
-            $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateYesterday)
+            $data_clone = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateYesterday)
                         ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                         ->get();
     
-            $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTime', '=', $dateToday)
+            $data_echo = Active::where('ref_key', '=', $agency_id)->where('dateTimeI', '=', $dateToday)
                         ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                         ->get();
           
@@ -259,7 +290,7 @@ class updateController extends Controller
         $surveilance_case->Q_Center = request('centerq');
         $surveilance_case->House_Q = request('houseq');
         $surveilance_case->ref_key = $agency_id;
-        $surveilance_case->dateTime = $dateToday;
+        $surveilance_case->dateTimeII = $dateToday;
 
         $surveilance_case->save();
         return view('thankyou', ['agensi_n'=>$agency_session, 'agensi_id'=>$agency_id ]);
@@ -270,7 +301,7 @@ class updateController extends Controller
     }
 
     public function debug_page($id_a) {
-        $data_record = Active::where('ref_key', '=', $id_a)->pluck('dateTime'); 
+        $data_record = Active::where('ref_key', '=', $id_a)->pluck('dateTimeI'); 
         $dateToday = date('d/m/Y'); 
         
         dd($data_record, $dateToday);
@@ -290,7 +321,7 @@ class updateController extends Controller
         //$dateToday->modify('-1 day');
         //dd($dateYesterday);
 
-        $data_echo = Active::where('ref_key', '=', $id_a)->where('dateTime', '=', $dateYesterday)
+        $data_echo = Active::where('ref_key', '=', $id_a)->where('dateTimeI', '=', $dateYesterday)
                     ->join('agencies', 'agencies.id_n', 'actives.ref_key')
                     ->get();
         //dd($data_echo);
