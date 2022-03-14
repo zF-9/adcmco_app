@@ -59,7 +59,7 @@ class updateController extends Controller
                 ->orderBy('Nama_agency')->where('dateTimeII', '=', $datetime)->get();//->toArray();
         $agency_count = $a_list->groupBy('Nama_agency');//->toArray();
 
-        $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTimeI', '=', $datetime)->get();
+        $b_list = DB::table('agencies')->join('surveilances', 'surveilances.ref_key', 'agencies.id_n')->orderBy('Nama_agency')->where('dateTimeII', '=', $datetime)->get();
         $survl_count = $b_list->groupBy('Nama_agency');
 
         //dd($agency_count);
