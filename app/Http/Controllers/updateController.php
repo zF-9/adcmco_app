@@ -192,7 +192,7 @@ class updateController extends Controller
     public function update_active(Request $request) {
         $dateToday = date('d/m/Y'); 
         //$dateYesterday = $dateToday - 1;
-        $dateYesterday = date('d/m/Y',strtotime("-2 days"));
+        $dateYesterday = date('d/m/Y',strtotime("-1 days"));
         //$dateToday->modify('-1 day');
         //dd($dateYesterday);
 
