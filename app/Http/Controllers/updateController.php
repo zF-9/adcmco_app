@@ -159,8 +159,10 @@ class updateController extends Controller
             $agency_id = 1 ;
         }
         else {
-            $agency_id = $agency_id - 1;
+            $agency_id = $agency_id - 2 ;
         }
+
+        //dd($agency_id);
 
         $ag_idn = Agencies::where('id_n', '=', $agency_id)->pluck('id_n');
         $ag_name = Agencies::where('id_n', '=', $agency_id)->pluck('Nama_agency');

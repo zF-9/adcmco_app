@@ -47,7 +47,7 @@ Route::get('/dashboard-analytics', function() {
     return view('Dashboard-analytics');
 });
 
-Route::get('/proto', function () {
+Route::get('/case_form', function () {
     $list_all = Agencies::all(['id_n', 'Nama_agency']);
     return view('agency_select', ['list'=>$list_all]);
 });

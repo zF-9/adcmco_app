@@ -55,7 +55,8 @@
                 <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                   <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/homepage" style="padding: 10px 20px;">Home</a>   
                 <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/dashboard-analytics" style="padding: 10px 20px;">Analytics</a>
-                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="About.html" style="padding: 10px 20px;">About</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/debug" style="padding: 10px 20px;">Admin</a>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/" style="padding: 10px 20px;">About</a>
 </li></ul>
               </div>
             </div>
@@ -135,7 +136,7 @@
                     <br>
                     <br>&nbsp;
                   </p>
-                  <a href="/proto" class="u-active-palette-4-base u-align-left u-border-0 u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">Kemas Kini Data</a>
+                  <a href="/case_form" class="u-active-palette-4-base u-align-left u-border-0 u-btn u-btn-round u-button-style u-custom-font u-font-raleway u-hover-palette-4-base u-palette-1-base u-radius-50 u-text-body-alt-color u-btn-1">Kemas Kini Data</a>
 		 </div>
               </div>
             </div>
