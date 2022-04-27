@@ -155,12 +155,12 @@ class updateController extends Controller
         //$dateToday->modify('-1 day');
         //dd($dateYesterday);
 
-        if($agency_id - 1 == 0){
-            $agency_id = 1 ;
-        }
-        else {
-            $agency_id = $agency_id - 2 ;
-        }
+        //if($agency_id - 1 <= 0){
+        //    $agency_id = 1 ;
+        //}
+        //else {
+            //$agency_id = $agency_id - 1 ;
+        //}
 
         //dd($agency_id);
 
