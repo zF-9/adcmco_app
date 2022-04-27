@@ -159,7 +159,7 @@
     <script src="/js/global_form.js"></script>
 
 
-    <!-- Logout Modal -->
+    <!-- Logout Modal 
     <div id="logoutModal" class="modal fade">
         <div class="modal-dialog modal-confirm">
         <div class="modal-content">
@@ -187,7 +187,7 @@
         </div>
         </div>
     </div>
-    <!-- Logout Modal -->    
+     Logout Modal -->    
 
 </body>
 
