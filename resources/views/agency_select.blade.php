@@ -54,7 +54,6 @@
                             <div class="rs-select2 js-select-simple">
                                 <select name="agencies">
                                     <option disabled="disabled" selected="selected">Choose option</option>
-                                    <option value="0">Kementerian Kerja Raya</option>
                                     <option value="1">Kementerian Pembangunan Luar Bandar</option>
                                     <option value="2">Kementerian Kewangan</option>
                                     <option value="3">Kementerian Pertanian dan Industri Makanan</option>
@@ -204,6 +203,7 @@
                                     <option value="147">Pihak Berkuasa Pembangunan Ekonomi & Pelaburan (SEDIA)</option>
                                     <option value="148">Sabah Energy Corporation Sdn Bhd</option>
                                     <option value="149">Puspanita Cawangan Negeri Sabah</option>
+                                    <option value="150">Kementerian Kerja Raya</option>
                                     <!--@foreach($list as $senarai)
                                         <option value={{$senarai->id}}>{{$senarai->Nama_agency}}</option>
                                     @endforeach-->
